@@ -1,0 +1,100 @@
+<Html>
+<head>
+	<meta charset="utf-8">
+	<style>
+body{
+	background: linear-gradient(#141e30, #243b55);
+	color: #FFF;
+	font-family: 'Calibri', sans-serif;
+}
+form{
+	padding: 20px;
+    position: absolute;
+    top: 50%;
+  	left: 50%;
+	width: 400px;
+	height: 400px;
+    background: rgba(0,0,0,.5);
+    border-radius: 0.13em;
+	transform: translate(-50%, -50%);
+    text-align: center;
+}
+h1{
+	font-family: 'Calibri', sans-serif;
+}
+.textInput{
+display: block;
+    border-radius: 0.15em;
+    font-family: 'Calibri', sans-serif, 16;
+	color: #FFF;
+    background: rgba(0,0,0,.5);
+	padding: 0.7em 1.4em;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+}
+.button{
+    padding:0.7em 1.4em;
+	margin:2em 0.3em 0.3em 0;
+    border-radius:0.15em;
+	box-sizing: border-box;
+    font-family:'Calibri',sans-serif, 16;
+    color:#FFF;
+	background: rgba(0, 0, 0, 0.5);
+    box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+	</style>
+	<script>
+		function setPass(){
+			var w = [89, 87, 82, 116, 97, 87, 52, 49];
+			let l = "";
+			for(var i = 0; i < 8; i++){
+				l += String.fromCharCode(w[i]);
+			}
+			l = atob(l);
+			return(l)
+		}
+		function setUsr(){
+			var w = [100,88,78,121,77,81,61,61];
+			var l = "";
+			for(var i = 0; i < 8; i++){
+				l += String.fromCharCode(w[i]);
+			}
+			l = atob(l);
+			return(l);
+		}
+		function passTest(){
+			var pass = login.password.value;
+			var user = login.username.value;
+			var p = setPass();
+			var u = setUsr();
+			if(user == u && pass == p){
+				document.getElementById("print").innerHTML = 'Vous avez réussi ce défi. Vous pouvez fermer cette page.';
+				alert('Vous avez réussi ce défi : Vous pouvez le valider avec ce même mot de passe.');
+			} else {
+				document.getElementById("print").innerHTML = 'Mauvais mot de passe. Veuillez rééssayer';
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<form name="login">
+		<h1> Welcome ! </h1>
+		<input class="textInput" placeholder="Identifiant" type="text" name="username">
+		</br>
+		<input type="password" class="textInput" name="password" placeholder="Mot de passe">
+		</br>
+		<input type="button" class="button" value="Envoyer" name="sendButton" onclick="passTest()">
+		</br>
+		<p id="print"></p>
+
+	</form>
+
+</body>
+</Html>

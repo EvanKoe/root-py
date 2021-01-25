@@ -1,0 +1,104 @@
+<html>
+<head>
+    <style>
+    body{
+        font-family: 'Calibri', sans-serif;
+        background: linear-gradient(#141e30, #243b55);
+    }
+    form{
+	    padding: 20px;
+	    background: rgba(0, 0, 0, 0.5);
+        border-radius: 0.13em;
+    }
+    .button{
+        display:inline-block;
+        padding:0.7em 1.4em;
+        margin:1em 0.3em 0.3em 0;
+        border-radius:0.15em;
+        box-sizing: border-box;
+        text-decoration:none;
+        font-family:'Roboto',sans-serif;
+        text-transform:uppercase;
+        font-weight:400;
+        color:#FFFFFF;
+        background: rgba(0, 0, 0, 0.5);
+        box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+        text-align:center;
+        position:relative;
+    }
+    .button:active{
+        box-shadow:inset 0 0.02em 0 0.2em rgba(0,0,0,0.17);
+    }
+    .input{
+        border-radius: 0.15em;
+        font-family: 'Roboto', sans-serif, 13;
+        color: #FFFFFF;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 0.7em 1.4em;
+        margin-top: 0.5em;
+        width: 30em;
+    }
+    .comm{
+        padding: 0.5em 1em 1em 0.5em;
+        margin-top: 2em;
+        color: #FFF;
+        background: linear-gradient(#141e30, #243b55);
+    }
+    h1{
+        padding: 0.2em;
+        color: #FFF;
+    }
+    .help{
+        float: right;
+        display: inline;
+        color: #FFF;
+        border: 1px solid #000;
+        border-radius: 10em;
+        box-sizing: border-box;
+        padding: 1em 2em 1em 2em;
+        margin: 0 0 2em 0;
+        background: rgba(0, 0, 0, 0.5);
+        box-shadow: 5px 5px 5px black;
+        text-align: justify;
+    }
+    img{
+        vertical-align: middle;
+    }
+    </style>
+</head>
+<body>
+    <form name="login" method='POST'> <h1> Attaque XSS </h1>
+        <legend>
+        <input type="text" name="passType" placeholder="Identifiant" class="input">
+        <br>
+        <input type="text" name="comment" rows="4" cols="60" placeholder="Commentaire" class="input">
+        <br>
+        <input type="button" name="send" value="Se connecter" onclick=onClick() class="button">
+        </legend>
+        <div class = 'comm'>
+            <h3 id='titleAff'> Identifiant </h3>
+            <p id='commentAff'> Message </p>
+        </div>
+    </form>
+    <script type='text/javascript'>
+    var admin = atob('VXc4TmpNU2tEamM=');
+    function onClick(){
+	    passTest()
+    }
+    function passTest(){
+	    var title = login.passType.value ; 
+	    var comment = login.comment.value ;
+        if(title == '' || comment == ''){
+            if(title == ''){
+                alert('Votre identifiant est vide. Veuillez remplir les champs avant de poster.');
+            } else if(comment == ''){
+                alert('Votre commentaire est vide. Veuillez remplir les champs avant de poster.');
+            }
+        } else {
+            document.getElementById("titleAff").innerHTML = "<h3 id='titleAff'>" + title + "</h3>";
+            document.getElementById("commentAff").innerHTML = "<p id='commentAff'>" + comment + "</p>";
+        } 
+    }
+    </script>
+</body>
+</html>

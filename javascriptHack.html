@@ -1,0 +1,83 @@
+<html> 
+<head>
+    <script type='text/javascript'>
+    function onclick(event) {
+        passTrue()
+    }
+    function passTrue(){
+        var password=login.password.value;
+	    password=password.toLowerCase();
+        if (password == 'validate1'){
+            alert('Accès autorisé ! Tu peux valider le défi avec ce mot de passe : validate1');
+        } else {
+            alert('Mauvais mot de passe ! Rééssaye !');
+        }
+    }
+    </script><style>
+    body{
+    	background: linear-gradient(#141e30, #243b55);
+    	color: #FFF;
+    	font-family: 'Calibri', sans-serif;
+    }
+    form{
+        padding: 20px;
+        position: absolute;
+        top: 50%;
+  		left: 50%;
+  		width: 400px;
+  		height: 400px;
+        background: rgba(0,0,0,.5);
+        border-radius: 0.13em;
+        transform: translate(-50%, -50%);
+        align-items: center;
+    }
+    .button{
+        padding:0.7em 1.4em;
+        margin:2em 0.3em 0.3em 0;
+        border-radius:0.15em;
+        box-sizing: border-box;
+        font-family:'Calibri',sans-serif, 16;
+        color:#FFF;
+        background: rgba(0, 0, 0, 0.5);
+        box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+        text-align:center;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+    .button:active{
+    	box-shadow:inset 0 0.02em 0 0.2em rgba(0,0,0,0.17);
+    }
+    .input{
+    	display: block;
+        border-radius: 0.15em;
+        font-family: 'Calibri', sans-serif, 16;
+        color: #FFF;
+        background: rgba(0,0,0,.5);
+        padding: 0.7em 1.4em;
+        margin-top: 8em;
+        margin-left: auto;
+        margin-right: auto;
+        width: 350px;
+
+    }
+    h1{
+        padding: 0 0 0.2em 0;
+        text-align: center;
+    }
+    h3{
+    	text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <form name='login' method='POST'> 
+    <h1> Trouvez le mot de passe </h1>
+    <h3> Référez-vous au programme Python pour avoir de l'aide </h3>
+    <p> Veuillez ne pas utiliser 'Entrer' pour valider le mot de passe </p>
+    <input type='text' name='password' class="input" placeholder="Mot de passe">
+</br>
+    <input type='button' name='button' onclick='passTrue()' value='Se connecter' class="button">
+    </form>
+</body>
+</html>
